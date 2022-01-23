@@ -1,0 +1,38 @@
+<html>
+    <head><title><%= title %></title>
+        <link rel="stylesheet" href="/styles.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <script>
+            window.onload=function(){
+            const data=document.getElementById('delete');
+            data.addEventListener('click',(e)=>{
+            const dat=document.getElementById('delete').value;
+            var endpoint="/blogs/"+dat;
+            fetch(endpoint,{
+                method:'DELETE'  
+            }
+            )
+            .then(response=>response.json())
+            .then(data=>window.location.replace(data.redirect))
+            .catch(err=>console.log(err));
+            });
+        }
+            </script>
+    </head>
+    <body>
+        <div class="blog-details">
+        <h1><%=detailed_blog.title %> </h2><br>
+        <div class="content">
+            <p><%=detailed_blog.body%></p><br><br>
+            <p><%=detailed_blog.createdAt%></p>
+        </div>
+        <br><br>
+        
+        <button id="delete" value="<%=detailed_blog._id %>">Delete</button>
+        
+       </div>
+
+       
+    </body>  
+</html>
+

@@ -1,0 +1,26 @@
+        <%- include('./partials/head.ejs') %>
+        <%- include('./partials/nav.ejs') %>
+    <div class="blogs">
+     <h1>All community  Blogs </h2>
+    <hr>
+     <% if(blogs.length> 0){ %>
+        <% blogs.forEach(blog=>{ %>
+            <div class="content-body">
+            <a class="single" href="/blogs/<%=blog._id %>">
+            <h3 class="title"><h1>Title :</h1><%=blog.title%></h3>
+            <p class="snippet"><p>Author is :</p><%=blog.snippet%></p>
+            <p class="body"><%=blog.body%></p><br><br>
+            <p><%=blog.createdAt%></p>
+            <hr><br><br>
+
+            </a>
+            </div>
+        <%})%>
+        
+     <%}else{%>
+      <p>There are no blogs to display......</p>
+    <%}%>
+     
+    
+    </div>
+    <%- include('./partials/footer.ejs') %>
